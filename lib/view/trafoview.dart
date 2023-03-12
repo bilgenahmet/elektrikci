@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_prin
 
 import 'package:elektrikci/controller/customwidget/kesitgorsel.dart';
 import 'package:elektrikci/controller/veriler_klas.dart';
