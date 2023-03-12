@@ -30,10 +30,11 @@ class _TrafoviewState extends State<Trafoview> {
               height: 10,
             ),
             Text(
-              "TRAFO GÜCÜ",
+              "TRAFO GÜCÜ (KVA)",
               style: (TextStyle(
                   color: CupertinoColors.activeBlue,
-                  fontWeight: FontWeight.bold)),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20)),
             ),
             SizedBox(
               height: 10,
@@ -63,15 +64,17 @@ class _TrafoviewState extends State<Trafoview> {
                             return Center(
                               child: Text(
                                 VerilerKlas().secilecentrafo(index).toString(),
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             );
                           }),
                         ),
                       );
                     },
-                    child: Text(VerilerKlas()
-                        .secilecentrafo(_selectedtrafo)
-                        .toString()),
+                    child: Text(
+                      VerilerKlas().secilecentrafo(_selectedtrafo).toString(),
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ],
@@ -86,7 +89,7 @@ class _TrafoviewState extends State<Trafoview> {
                       child: Text(
                         "AKIM DEĞERİ",
                         style: (TextStyle(
-                            color: CupertinoColors.activeBlue,
+                            color: CupertinoColors.systemRed,
                             fontWeight: FontWeight.bold)),
                       ),
                     ),
@@ -109,7 +112,7 @@ class _TrafoviewState extends State<Trafoview> {
                       child: Text(
                         "TMŞ DEĞERİ",
                         style: (TextStyle(
-                            color: CupertinoColors.activeBlue,
+                            color: CupertinoColors.systemRed,
                             fontWeight: FontWeight.bold)),
                       ),
                     ),
@@ -120,8 +123,9 @@ class _TrafoviewState extends State<Trafoview> {
                       child: Text(
                         VerilerKlas().secilentms(_selectedtrafo),
                         style: (TextStyle(
-                            color: CupertinoColors.activeBlue,
-                            fontWeight: FontWeight.bold)),
+                          color: CupertinoColors.activeBlue,
+                          fontWeight: FontWeight.bold,
+                        )),
                       ),
                     ),
                   ],
@@ -135,7 +139,7 @@ class _TrafoviewState extends State<Trafoview> {
               child: Text(
                 "KABLO KESİTİ",
                 style: (TextStyle(
-                    color: CupertinoColors.activeBlue,
+                    color: CupertinoColors.systemRed,
                     fontWeight: FontWeight.bold,
                     fontSize: 20)),
               ),
@@ -147,7 +151,7 @@ class _TrafoviewState extends State<Trafoview> {
                 "BAKIR",
                 VerilerKlas().secilencukablokesiti(_selectedtrafo),
                 VerilerKlas().secilenbarakesiti(_selectedtrafo),
-                0xFFB87333),
+                0xFFCD7F32),
             Kesitgorsel(
                 "ALÜMİNYUM",
                 VerilerKlas().secilenalkablokesiti(_selectedtrafo),

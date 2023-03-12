@@ -25,7 +25,7 @@ class Kesitgorsel extends StatelessWidget {
             child: Text(
               baslik,
               style: (TextStyle(
-                  color: CupertinoColors.activeBlue,
+                  color: CupertinoColors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 16)),
             ),
@@ -42,7 +42,7 @@ class Kesitgorsel extends StatelessWidget {
                   child: Text(
                     "KABLO",
                     style: (TextStyle(
-                        color: CupertinoColors.activeBlue,
+                        color: CupertinoColors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 16)),
                   ),
@@ -52,7 +52,7 @@ class Kesitgorsel extends StatelessWidget {
                   child: Text(
                     "BARA",
                     style: (TextStyle(
-                        color: CupertinoColors.activeBlue,
+                        color: CupertinoColors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 16)),
                   ),
@@ -67,7 +67,7 @@ class Kesitgorsel extends StatelessWidget {
                 child: Text(
                   kablokesit,
                   style: (TextStyle(
-                      color: CupertinoColors.activeBlue,
+                      color: CupertinoColors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 16)),
                 ),
@@ -77,7 +77,7 @@ class Kesitgorsel extends StatelessWidget {
                 child: Text(
                   barakesit,
                   style: (TextStyle(
-                      color: CupertinoColors.activeBlue,
+                      color: CupertinoColors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 16)),
                 ),
