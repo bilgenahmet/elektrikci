@@ -14,9 +14,15 @@ class Home extends StatelessWidget {
       home: CupertinoPageScaffold(
         navigationBar: CupertinoNavigationBar(
           backgroundColor: CupertinoColors.activeBlue,
-          middle: Text("ELEKTRİK BİLGİ"),
+          middle: Text(
+            "TRAFO GÜCÜ (KVA)",
+            style: (TextStyle(
+                color: CupertinoColors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 20)),
+          ),
         ),
-        child: Trafoview(),
+        child: SingleChildScrollView(child: Trafoview()),
       ),
     );
   }

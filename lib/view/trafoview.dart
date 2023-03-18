@@ -5,6 +5,7 @@ import 'package:elektrikci/controller/veriler_klas.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:elektrikci/controller/hesaplama.dart';
+import 'package:get/route_manager.dart';
 
 class Trafoview extends StatefulWidget {
   const Trafoview({super.key});
@@ -26,19 +27,6 @@ class _TrafoviewState extends State<Trafoview> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              "TRAFO GÜCÜ (KVA)",
-              style: (TextStyle(
-                  color: CupertinoColors.activeBlue,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20)),
-            ),
-            SizedBox(
-              height: 10,
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -49,7 +37,7 @@ class _TrafoviewState extends State<Trafoview> {
                     minSize: 60,
                     onPressed: () {
                       _selectedtrafo = 0;
-                      setState(() {});
+                      sonucc = "72";
                       _showDialog(
                         CupertinoPicker(
                           useMagnifier: true,
@@ -58,13 +46,14 @@ class _TrafoviewState extends State<Trafoview> {
                             _selectedtrafo = selecteditem;
                             sonucc = Hesapla().hesaplama(
                                 VerilerKlas().secilecentrafo(_selectedtrafo));
-                            setState(() {});
                           },
                           children: List<Widget>.generate(11, (int index) {
                             return Center(
                               child: Text(
                                 VerilerKlas().secilecentrafo(index).toString(),
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: CupertinoColors.activeBlue),
                               ),
                             );
                           }),
@@ -73,7 +62,10 @@ class _TrafoviewState extends State<Trafoview> {
                     },
                     child: Text(
                       VerilerKlas().secilecentrafo(_selectedtrafo).toString(),
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: CupertinoColors.white,
+                      ),
                     ),
                   ),
                 ),
@@ -147,16 +139,20 @@ class _TrafoviewState extends State<Trafoview> {
             SizedBox(
               height: 30,
             ),
-            Kesitgorsel(
-                "BAKIR",
-                VerilerKlas().secilencukablokesiti(_selectedtrafo),
-                VerilerKlas().secilenbarakesiti(_selectedtrafo),
-                0xFFCD7F32),
-            Kesitgorsel(
-                "ALÜMİNYUM",
-                VerilerKlas().secilenalkablokesiti(_selectedtrafo),
-                VerilerKlas().secilenalbarakesiti(_selectedtrafo),
-                0xFFC0C0C0)
+            Builder(builder: (context) {
+              return Kesitgorsel(
+                  "BAKIR",
+                  VerilerKlas().secilencukablokesiti(_selectedtrafo),
+                  VerilerKlas().secilenbarakesiti(_selectedtrafo),
+                  0xFFCD7F32);
+            }),
+            Builder(builder: (context) {
+              return Kesitgorsel(
+                  "ALÜMİNYUM",
+                  VerilerKlas().secilenalkablokesiti(_selectedtrafo),
+                  VerilerKlas().secilenalbarakesiti(_selectedtrafo),
+                  0xFFC0C0C0);
+            })
           ],
         ),
       ),
@@ -165,21 +161,48 @@ class _TrafoviewState extends State<Trafoview> {
 
   void _showDialog(Widget child) {
     showCupertinoModalPopup<void>(
-        context: context,
-        builder: (BuildContext context) => Container(
-              height: 216,
-              padding: const EdgeInsets.only(top: 6.0),
-              // The Bottom margin is provided to align the popup above the system navigation bar.
-              margin: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom,
-              ),
-              // Provide a background color for the popup.
-              color: CupertinoColors.systemBackground.resolveFrom(context),
-              // Use a SafeArea widget to avoid system overlaps.
-              child: SafeArea(
-                top: false,
-                child: child,
-              ),
-            ));
+      context: context,
+      builder: (BuildContext context) => Container(
+        height: 216,
+        padding: const EdgeInsets.only(top: 18.0),
+        // The Bottom margin is provided to align the popup above the system navigation bar.
+        margin: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        // Provide a background color for the popup.
+        color: CupertinoColors.systemBackground.resolveFrom(context),
+        // Use a SafeArea widget to avoid system overlaps.
+        child: SafeArea(
+          top: false,
+          child: Column(
+            children: [
+              CupertinoButton(
+                  child: Text(
+                    "BİTTİ",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      Navigator.pop(context);
+                    });
+                  }),
+              Container(
+                  height: 120,
+                  padding: const EdgeInsets.only(top: 6.0),
+                  // The Bottom margin is provided to align the popup above the system navigation bar.
+                  margin: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom,
+                  ),
+                  // Provide a background color for the popup.
+                  color: CupertinoColors.systemBackground.resolveFrom(context),
+                  child: SafeArea(
+                    top: false,
+                    child: child,
+                  )),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

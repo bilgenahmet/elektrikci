@@ -37,8 +37,7 @@ class Kesitgorsel extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Align(
-                  alignment: Alignment.topLeft,
+                Center(
                   child: Text(
                     "KABLO",
                     style: (TextStyle(
@@ -47,7 +46,6 @@ class Kesitgorsel extends StatelessWidget {
                         fontSize: 16)),
                   ),
                 ),
-                Padding(padding: EdgeInsets.all(0.0)),
                 Center(
                   child: Text(
                     "BARA",
@@ -61,7 +59,7 @@ class Kesitgorsel extends StatelessWidget {
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Center(
                 child: Text(
@@ -72,7 +70,6 @@ class Kesitgorsel extends StatelessWidget {
                       fontSize: 16)),
                 ),
               ),
-              Padding(padding: EdgeInsets.all(30.0)),
               Center(
                 child: Text(
                   barakesit,
